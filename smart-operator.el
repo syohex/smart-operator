@@ -5,6 +5,7 @@
 ;; Author: William Xu <william.xwl@gmail.com>
 ;; Version: 4.0
 ;; Url: http://xwl.appspot.com/ref/smart-operator.el
+;; Package-Requires: ((cl-lib "0.5"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -42,6 +43,7 @@
 ;;; Code:
 
 (require 'cc-mode)
+(require 'cl-lib)
 
 ;;; smart-operator minor mode
 
@@ -112,7 +114,7 @@ e.g., `=' becomes ` = ', `+=' becomes ` += '.
 When `only-where' is 'after, we will insert space at back only;
 when `only-where' is 'before, we will insert space at front only;
 when `only-where' is 'middle, we will not insert space."
-  (case only-where
+  (cl-case only-where
     ((before) (insert " " op))
     ((middle) (insert op))
     ((after) (insert op " "))
